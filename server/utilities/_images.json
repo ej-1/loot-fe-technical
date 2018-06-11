@@ -1,0 +1,27 @@
+{
+  "images": [
+    { "name": "new york", "path": "http://localhost:3001/img/new_york.jpg" },
+    { "name": "morroco", "path": "http://localhost:3001/img/morroco.jpg" },
+    { "name": "paris", "path": "http://localhost:3001/img/paris.jpg" },
+    { "name": "amsterdam", "path": "http://localhost:3001/img/amsterdam.jpg" },
+    { "name": "las vegas", "path": "http://localhost:3001/img/las_vegas.jpg" },
+    { "name": "japan", "path": "http://localhost:3001/img/japan.jpg" },
+    {
+      "name": "apple iphone x",
+      "path": "http://localhost:3001/img/iphone_x.jpg"
+    },
+    { "name": "bose qc35", "path": "http://localhost:3001/img/bose_qc35.jpg" },
+    {
+      "name": "adidas yeezys",
+      "path": "http://localhost:3001/img/adidas_yeezy.jpg"
+    },
+    {
+      "name": "mortgage deposit",
+      "path": "http://localhost:3001/img/apartment.jpg"
+    },
+    { "name": "tesla model x", "path": "http://localhost:3001/img/tesla.jpg" },
+    { "name": "playstation 4", "path": "" },
+    { "name": "xbox", "path": "" },
+    { "name": "apple watch", "path": "" }
+  ]
+}

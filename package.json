@@ -1,0 +1,23 @@
+{
+  "name": "loot-fe-technical",
+  "version": "1.0.0",
+  "description": "Frontend technical assessment for loot candidates",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server",
+    "test": "jest"
+  },
+  "keywords": [
+    "loot",
+    "assessment",
+    "frontend",
+    "technical"
+  ],
+  "author": "Phillip A Boateng",
+  "license": "ISC",
+  "dependencies": {
+    "date-fns": "^1.29.0",
+    "express": "^4.16.3",
+    "uuid": "^3.2.1"
+  }
+}
