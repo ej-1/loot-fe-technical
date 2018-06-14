@@ -20,11 +20,11 @@ The programming challenge exists in 2 parts:
 
 #### Goal Card
 
-![Screen](./images/goal_card.png)
+![Screen](./assets/images/goal_card.png)
 
 #### Goal Details
 
-![Screen](./images/goal_details.png)
+![Screen](./assets/images/goal_details.png)
 
 #### Create the goal card
 
