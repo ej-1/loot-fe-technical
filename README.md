@@ -28,14 +28,14 @@ The programming challenge exists in 2 parts:
 
 #### Create the goal card
 
-- Create a layout based on the image above "Goal Card".
-- Style the layout consistently and beautifully, adhering as closely to the design as possible.
+- Create a layout based on the image above, "Goal Card".
+- Style the layout consistently, adhering as closely to the design as possible.
 
 #### Create the goal details view
 
-- Create a layout base on the image above "Goal Card Details"
+- Create a layout base on the image above, "Goal Card Details"
 - Implement it as a full page view
-- Style the layout consistently and beautifully, adhering as closely to the design as possible.
+- Style the layout consistently, adhering as closely to the design as possible.
 
 ### PART B: Functionality
 
@@ -61,7 +61,7 @@ The API will return this object structure of random data, any null values should
 ```
 
 - Display the first 10 goals using the UI created in PART A, sticking to the layout, placing data where it fits.
-- Display the full page details view when a user selects a goal
+- Display the full page details view when a user selects a goal, request the details of a single goal.
 
 ## Additional Instructions
 
@@ -72,6 +72,10 @@ This repository is will spin up a server and will serve the endpoints mentioned 
 - Clone this repository
 - Install dependencies `npm install`
 - Start server `npm start`
+- Server will be available from `http://localhost:3001/api`
+
+#### Submitting
+
 - After you're done, provide us the link to your repository.
 - Leave comments where you were not sure how to properly proceed.
 
