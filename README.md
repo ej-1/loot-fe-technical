@@ -1,6 +1,6 @@
 # Front-End Technical Test
 
-NOTE: rThis repository only holds the code to spin up a server, to set up the API necessary to complete this coding challenge
+NOTE: This repository only holds the code to spin up a server, to set up the API necessary to complete this coding challenge
 
 You must use [ReactJS](https://reactjs.org/) to complete this challenge.
 
