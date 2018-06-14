@@ -1,6 +1,6 @@
 # Front-End Technical Test
 
-NOTE: This repository only holds the code to spin up a server, to set up the API necessary to complete this coding challenge
+NOTE: rThis repository only holds the code to spin up a server, to set up the API necessary to complete this coding challenge
 
 You must use [ReactJS](https://reactjs.org/) to complete this challenge.
 
@@ -20,11 +20,11 @@ The programming challenge exists in 2 parts:
 
 #### Goal Card
 
-![Screen](https://s26.postimg.cc/v8pc7jfhl/Goal_Card.png)
+![Screen](./goal_card.png)
 
 #### Goal Details
 
-![Screen](https://s26.postimg.cc/jvprt2b15/goal_details.png)
+![Screen](./goal_details.png)
 
 #### Create the goal card
 
