@@ -95,6 +95,7 @@ You are free to use any tools you prefer and are not required to use any in the 
 - Knowledge of application flow.
 - Knowledge of modern best practices/coding patterns.
 - Demonstration of good state management.
-- Good component structure thinking.
+- Good component structure.
+- Good components reusablity.
 - Usage of linters.
 - Time Complexity Considerations
