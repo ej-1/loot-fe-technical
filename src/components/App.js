@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Card from "../components/cards/card";
 
 class App extends Component {
   render() {
