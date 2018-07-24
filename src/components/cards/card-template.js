@@ -6,27 +6,42 @@ const getImageContent = (imageUrl, imageText) => {
     <Fragment>
       <img className="card-image" src={imageUrl} alt="card-image" />
       <p>{imageText}</p>
+      {/* <p>{imageText}</p> ...could be turned into a function */}
     </Fragment>
   );
 };
 
-const getCardContent = (amountUsed, endDate, getElement, ...getElementArgs) => {
+const getCardContent = (
+  amountUsed,
+  amountLimit,
+  endDate,
+  showDetailsButton,
+  getElement,
+  getElementArgs
+) => {
   return (
     <Fragment>
-      <div className="details-button"> ...</div>
+      {showDetailsButton && <div className="details-button"> ...</div>}
       <div className="amount-used">{amountUsed}</div>
-      {getElement(...getElementArgs)}
+      {getElement(amountLimit, ...getElementArgs)}
+      {/* the mysterious element returned is a progress bar most of the time. */}
       <div className="end-date">{endDate}</div>
     </Fragment>
   );
 };
 
-const getProgressBar = (progressBar, amountLimit) => {
+const getProgressBar = (amountLimit, progressBar, progressFilledColor) => {
   return (
     <Fragment>
       <div className="progress-bar-container">
         <div className="progress-bar">
-          <div style={{ width: `${progressBar}%` }} className="progress" />
+          <div
+            style={{
+              width: `${progressBar}%`,
+              background: `${progressFilledColor}`
+            }}
+            className="progress"
+          />
         </div>
         <div className="amount-limit">{amountLimit}</div>
       </div>
@@ -45,14 +60,18 @@ class Card extends Component {
       imageUrl,
       amountUsed,
       amountLimit,
+      showDetailsButton,
       progressBar,
+      progressFilledColor,
       endDate
     } = {
       imageUrl: "src/components/cards/new_york.jpg",
       imageText: "NEW YORK",
       amountUsed: "£ 600.00",
       amountLimit: "£ 1000.00",
+      showDetailsButton: true,
       progressBar: "40",
+      progressFilledColor: "#f6cb47",
       endDate: "By 15th June 2018"
     };
 
@@ -62,7 +81,14 @@ class Card extends Component {
           {getImageContent(imageUrl, imageText)}
         </div>
         <div className="content-container">
-          {getCardContent(amountUsed, endDate, getProgressBar, progressBar)}
+          {getCardContent(
+            amountUsed,
+            amountLimit,
+            endDate,
+            showDetailsButton,
+            getProgressBar,
+            [progressBar, progressFilledColor]
+          )}
         </div>
       </div>
     );
