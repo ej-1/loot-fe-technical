@@ -7,6 +7,12 @@ class Card extends Component {
   }
 
   render() {
+    const { amountUsed, amountLimit, progressBar, endDate } = {
+      amountUsed: 600,
+      amountLimit: 1000,
+      progressBar: 0.3,
+      endDate: "2018-09-01"
+    };
     return (
       <div className="card">
         <div className="image-container">
@@ -18,10 +24,10 @@ class Card extends Component {
           />
         </div>
         <div className="content-container">
-          <div className="amount">{this.props.amountUsed}</div>
-          <div className="progress-bar">{this.props.progress}</div>
-          <div className="amount">{this.props.amountLimit}</div>
-          <div className="end-date">{this.props.endDate}</div>
+          <div className="amount">{amountUsed}</div>
+          <div className="progress-bar">{progressBar}</div>
+          <div className="amount">{amountLimit}</div>
+          <div className="end-date">{endDate}</div>
         </div>
       </div>
     );
