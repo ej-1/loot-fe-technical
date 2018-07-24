@@ -52,6 +52,7 @@ const getProgressBar = (amountLimit, progressBar, progressFilledColor) => {
 class Card extends Component {
   constructor(props) {
     super(props);
+    console.log(this.props);
   }
 
   render() {
@@ -63,20 +64,12 @@ class Card extends Component {
       showDetailsButton,
       progressBar,
       progressFilledColor,
-      endDate
-    } = {
-      imageUrl: "src/components/cards/new_york.jpg",
-      imageText: "NEW YORK",
-      amountUsed: "£ 600.00",
-      amountLimit: "£ 1000.00",
-      showDetailsButton: true,
-      progressBar: "40",
-      progressFilledColor: "#f6cb47",
-      endDate: "By 15th June 2018"
-    };
+      endDate,
+      cardStyle
+    } = this.props;
 
     return (
-      <div className="card">
+      <div className="card" style={cardStyle}>
         <div className="image-container">
           {getImageContent(imageUrl, imageText)}
         </div>
