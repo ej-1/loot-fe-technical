@@ -2,13 +2,12 @@ $font-stack: "Lato", sans-serif;
 /*-apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial,
   sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";*/
 
-.card {
+.card-details {
   width: 180px;
   height: 250px;
   font-family: Arial;
   border-radius: 50px;
 
-  /*
   p {
     position: absolute;
     top: 35%;
@@ -17,7 +16,7 @@ $font-stack: "Lato", sans-serif;
     color: #fff;
     font-family: $font-stack;
   }
-*/
+
   .image-container {
     height: 50%;
     position: relative;
@@ -30,6 +29,22 @@ $font-stack: "Lato", sans-serif;
     }
   }
 
+  .details-button {
+    position: absolute;
+    height: 20px;
+    width: 20px;
+    background: #f6cb47;
+    color: #fff;
+    z-index: 1;
+    right: 20px;
+    top: -10px;
+    border-radius: 5px;
+    width: 22px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
+    text-align: center;
+  }
 }
 
 .card-image {
@@ -37,19 +52,7 @@ $font-stack: "Lato", sans-serif;
   height: 100%;
 }
 
-.card-image > p {
-  color: #fff;
-  font-size: 15px;
-  font-family: arial;
-  z-index: 1;
-  position: absolute;
-  top: 35%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-family: $font-stack;
-}
-
-.content-container-card {
+.content-container {
   height: 50%;
   position: relative;
   background: #fff;
@@ -86,67 +89,35 @@ $font-stack: "Lato", sans-serif;
       color: #5d5d5d;
     }
   }
-
-
-
-}
-
-
-/* > direct descendants */
-.content-container-card > .amount-used {
-  position: absolute;
-  top: 7px;
-  left: 5%;
-  font-family: "Lato", sans-serif;
-  color: #5d5d5d;
-}
-
-
-.content-container-card >
-  .details-button {
+  .amount-used {
     position: absolute;
-    height: 20px;
-    width: 20px;
-    background: #f6cb47;
-    color: #fff;
-    z-index: 1;
-    right: 20px;
-    top: -10px;
-    border-radius: 5px;
-    width: 22px;
-    border-bottom-left-radius: 5px;
-    border-bottom-right-radius: 5px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
-    text-align: center;
+    top: 7px;
+    left: 5%;
+    font-family: "Lato", sans-serif;
+    color: #5d5d5d;
   }
 
-.content-container-card > .end-date {
-  position: absolute;
-  bottom: 10px;
-  width: 100%;
-  text-align: center;
-  font-size: 11px;
-  font-family: $font-stack;
+  .end-date {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 11px;
+    font-family: $font-stack;
+  }
 }
 
-
-/* CARD DETAILS */
 .content-container-details {
-  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
-
-  .card-details-content-top {
-    text-align: right;
-    padding: 10px;
-  }
-
   .card-details-content-middle {
     position: relative;
-    /* height: 100px; */
+    height: 100px;
+    background: lightblue;
     display: table;
     width: 100%;
 
     .card-details-content-left {
       width: 50%;
+      background-color: red;
       /* position: absolute; */
       /* display: inline-block; */
       /* height: inherit; */
@@ -162,6 +133,7 @@ $font-stack: "Lato", sans-serif;
 
     .card-details-content-right {
       width: 50%;
+      background: blue;
       /* position: relative; */
       /* float: right; */
       /* height: inherit; */
@@ -169,59 +141,18 @@ $font-stack: "Lato", sans-serif;
       text-align: right;
       padding: 10px;
     }
+
+    p {
+      color: #222;
+      font-family: $font-stack;
+      text-align: left;
+    }
   }
 
   .card-details-content-bottom {
     height: 30%;
+    background: lightcoral;
     display: inline-block;
     width: 100%;
-    
-    p {
-      padding: 10px;
-    }
   }
-}
-
-
-.card-details-content-left > p {
-  color: #222;
-  font-family: $font-stack;
-}
-
-
-.card-details-content-left > .title {
-  font-size: 15px;
-}
-
-.card-details-content-left > .description {
-  font-size: 10px;
-}
-
-
-.card-details-content-right > p {
-  color: #222;
-  font-family: $font-stack;
-}
-
-.card-details-content-right > .amount-used {
-  text-align: right;
-}
-
-.card-details-content-right > .amount-limit {
-  text-align: right;
-  font-size: 12px;
-  margin-top: -15px;
-}
-
-.card-details-content-bottom > p {
-  font-size: 12px;
-  text-align: right;
-  font-family: $font-stack;
-}
-
-.button {
-  background: #54b8c3;
-  color: #fff;
-  border: 0;
-  border-radius: 1px;
 }

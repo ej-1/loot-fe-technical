@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Card from "../components/cards/card";
+//import Card from "../components/cards/card";
 import CardTemplate from "../components/cards/card-template";
 
 const cardDetailsStyle = {
@@ -13,6 +13,7 @@ const cardStyle = {
 };
 
 const card = {
+  componentType: 'card',
   imageUrl: "src/components/cards/new_york.jpg",
   imageText: "NEW YORK",
   amountUsed: "£ 600.00",
@@ -25,11 +26,12 @@ const card = {
 };
 
 const cardDetails = {
+  componentType: 'card-details',
   imageUrl: "src/components/cards/new_york.jpg",
-  imageText: "NEW YORK",
+  imageText: null,
   amountUsed: "£ 600.00",
   amountLimit: "£ 1000.00",
-  title: "NEW YORK",
+  title: "New York",
   description: "something something",
   showDetailsButton: true,
   progressBar: "40",

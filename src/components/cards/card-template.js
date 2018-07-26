@@ -1,11 +1,11 @@
 import React, { Component, Fragment } from "react";
-import "./card.scss";
+import '../cards/card.scss'
 
-const getImageContent = (imageUrl, title) => {
+const getImageContent = (imageUrl, imageText) => {
   return (
     <Fragment>
       <img className="card-image" src={imageUrl} alt="card-image" />
-      <p>{title}</p>
+      <p>{imageText}</p>
       {/* <p>{title}</p> ...could be turned into a function */}
     </Fragment>
   );
@@ -49,7 +49,7 @@ const getCardDetailsContent = (
         </div>
         <div className="card-details-content-right">
           <p className="amount-used">{amountLimit}</p>
-          <p className="amount-limit">{amountUsed}</p>
+          <p className="amount-limit">/ {amountUsed}</p>
         </div>
       </div>
       <div className="card-details-content-bottom">
@@ -79,12 +79,13 @@ const getProgressBar = (amountLimit, progressBar, progressFilledColor) => {
 };
 
 const getButtonElement = () => {
-  return <div>BUTTON</div>;
+  return <button type="button" className="button">Release funds</button>
+  ;
 };
 
 const buttonArguments = {};
 
-class Card extends Component {
+class CardTemplate extends Component {
   constructor(props) {
     super(props);
     console.log(this.props);
@@ -92,8 +93,10 @@ class Card extends Component {
 
   render() {
     const {
+      componentType,
       title,
       imageUrl,
+      imageText,
       amountUsed,
       amountLimit,
       showDetailsButton,
@@ -106,10 +109,10 @@ class Card extends Component {
     return (
       <div className="card" style={cardStyle}>
         <div className="image-container">
-          {getImageContent(imageUrl, title)}
+          {getImageContent(imageUrl, imageText)}
         </div>
 
-        {getCardDetailsContent(
+        {componentType === 'card-details' && getCardDetailsContent(
           amountUsed,
           amountLimit,
           endDate,
@@ -117,17 +120,17 @@ class Card extends Component {
           "how we spendit"
         )}
 
-        {/*getCardContent(
+        {componentType === 'card' && getCardContent(
             amountUsed,
             amountLimit,
             endDate,
             showDetailsButton,
             getProgressBar,
             [progressBar, progressFilledColor]
-          )*/}
+          )}
       </div>
     );
   }
 }
 
-export default Card;
+export default CardTemplate;
