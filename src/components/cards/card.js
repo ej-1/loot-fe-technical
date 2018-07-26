@@ -7,11 +7,19 @@ class Card extends Component {
   }
 
   render() {
-    const { imageText, amountUsed, amountLimit, progressBar, endDate } = {
+    const {
+      imageText,
+      amountUsed,
+      amountLimit,
+      progressBar,
+      progressFilledColor,
+      endDate
+    } = {
       imageText: "NEW YORK",
       amountUsed: "£ 600.00",
       amountLimit: "£ 1000.00",
       progressBar: "40",
+      progressFilledColor: "#f6cb47",
       endDate: "By 15th June 2018"
     };
     return (
@@ -20,17 +28,21 @@ class Card extends Component {
           <img
             className="card-image"
             src="src/components/cards/new_york.jpg"
-            alt="Smiley face"
+            alt="card-image"
           />
           <p>{imageText}</p>
         </div>
-
         <div className="content-container">
           <div className="details-button"> ...</div>
           <div className="amount-used">{amountUsed}</div>
           <div className="progress-bar-container">
             <div className="progress-bar">
-              <div style={{ width: `${progressBar}%` }} className="progress" />
+              <div
+                style={{
+                  background: "#f6cb47"
+                }}
+                className="progress"
+              />
             </div>
             <div className="amount-limit">{amountLimit}</div>
           </div>

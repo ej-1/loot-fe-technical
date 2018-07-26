@@ -8,7 +8,7 @@ $font-stack: "Lato", sans-serif;
   font-family: Arial;
   border-radius: 50px;
 
-  p {
+  card.p {
     position: absolute;
     top: 35%;
     left: 50%;
@@ -104,5 +104,52 @@ $font-stack: "Lato", sans-serif;
     text-align: center;
     font-size: 11px;
     font-family: $font-stack;
+  }
+}
+
+.content-container-details {
+  .card-details-content-middle {
+    position: relative;
+    height: 100px;
+    background: lightblue;
+    display: table;
+    width: 100%;
+
+    .card-details-content-left {
+      width: 50%;
+      background-color: red;
+      /* position: absolute; */
+      /* display: inline-block; */
+      /* height: inherit; */
+      display: table-cell;
+      /* background-color: white; */
+
+      p {
+        color: #222;
+        font-family: $font-stack;
+      }
+    }
+
+    .card-details-content-right {
+      width: 50%;
+      background: blue;
+      /* position: relative; */
+      /* float: right; */
+      /* height: inherit; */
+      display: table-cell;
+      text-align: right;
+    }
+
+    p {
+      color: #222;
+      font-family: $font-stack;
+    }
+  }
+
+  .card-details-content-bottom {
+    height: 30%;
+    background: lightcoral;
+    display: inline-block;
+    width: 100%;
   }
 }

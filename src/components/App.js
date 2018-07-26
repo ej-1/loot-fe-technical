@@ -29,6 +29,8 @@ const cardDetails = {
   imageText: "NEW YORK",
   amountUsed: "£ 600.00",
   amountLimit: "£ 1000.00",
+  title: "NEW YORK",
+  description: "something something",
   showDetailsButton: true,
   progressBar: "40",
   progressFilledColor: "#f6cb47",
