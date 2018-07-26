@@ -8,16 +8,6 @@ $font-stack: "Lato", sans-serif;
   font-family: Arial;
   border-radius: 50px;
 
-  /*
-  p {
-    position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    color: #fff;
-    font-family: $font-stack;
-  }
-*/
   .image-container {
     height: 50%;
     position: relative;
@@ -57,17 +47,12 @@ $font-stack: "Lato", sans-serif;
   border-bottom-right-radius: 5px;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
   color: #d6d6d6;
-  /* margin-top: -20px; */
-  /* right: 5%; */
-  /* left: 5%; */
 
   .progress-bar-container {
     .progress-bar {
       position: absolute;
-      /* width: 100%; */
       top: 40px;
       border: 1px solid #f9f9f9;
-      /* margin: 20px; */
       border-radius: 20px;
       background: #f7f7f7;
       height: 7px;
@@ -80,19 +65,13 @@ $font-stack: "Lato", sans-serif;
     .amount-limit {
       font-size: 10px;
       position: absolute;
-      /* width: 80%; */
       top: 55px;
       right: 5%;
       color: #5d5d5d;
     }
   }
-
-
-
 }
 
-
-/* > direct descendants */
 .content-container-card > .amount-used {
   position: absolute;
   top: 7px;
@@ -141,17 +120,12 @@ $font-stack: "Lato", sans-serif;
 
   .card-details-content-middle {
     position: relative;
-    /* height: 100px; */
     display: table;
     width: 100%;
 
     .card-details-content-left {
       width: 50%;
-      /* position: absolute; */
-      /* display: inline-block; */
-      /* height: inherit; */
       display: table-cell;
-      /* background-color: white; */
       padding: 10px;
 
       p {
@@ -162,9 +136,6 @@ $font-stack: "Lato", sans-serif;
 
     .card-details-content-right {
       width: 50%;
-      /* position: relative; */
-      /* float: right; */
-      /* height: inherit; */
       display: table-cell;
       text-align: right;
       padding: 10px;
@@ -182,12 +153,10 @@ $font-stack: "Lato", sans-serif;
   }
 }
 
-
 .card-details-content-left > p {
   color: #222;
   font-family: $font-stack;
 }
-
 
 .card-details-content-left > .title {
   font-size: 15px;
@@ -196,7 +165,6 @@ $font-stack: "Lato", sans-serif;
 .card-details-content-left > .description {
   font-size: 10px;
 }
-
 
 .card-details-content-right > p {
   color: #222;
@@ -219,7 +187,7 @@ $font-stack: "Lato", sans-serif;
   font-family: $font-stack;
 }
 
-.button {
+.btn {
   background: #54b8c3;
   color: #fff;
   border: 0;

@@ -79,7 +79,7 @@ const getProgressBar = (amountLimit, progressBar, progressFilledColor) => {
 };
 
 const getButtonElement = () => {
-  return <button type="button" className="button">Release funds</button>
+  return <button type="btn" className="button">Release funds</button>
   ;
 };
 
