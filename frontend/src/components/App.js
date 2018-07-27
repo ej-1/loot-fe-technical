@@ -2,6 +2,9 @@ import React, { Component } from "react";
 //import Card from "../components/cards/card";
 import CardTemplate from "../components/cards/card-template";
 
+import { API_DEFAULT_DATA } from "../../server/services/api-config";
+import { getGoals } from "../../server/services/api";
+
 const cardDetailsStyle = {
   width: "380px",
   height: "300px"
@@ -41,10 +44,27 @@ const cardDetails = {
 };
 
 class App extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = { goals: "" };
+  };
+
+  function(searchTerm) {
+    getGoals()
+      .then(data => this.setState({ goals: data }))
+      .catch(error => console.log(error.message)); // Promise
+  };
+
+  function(onComponentMount) {
+    searchTerm();
+  };
+
   render() {
     return (
       <div>
         <h1>My React App!</h1>
+        {this.state.data}
         <CardTemplate {...card} />
         <CardTemplate {...cardDetails} />
       </div>
