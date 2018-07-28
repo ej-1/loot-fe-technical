@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from "react";
+import { Link } from "react-router-dom";
 import '../cards/card.css'
 
 const getImageContent = (imageUrl, imageText) => {
@@ -11,6 +12,28 @@ const getImageContent = (imageUrl, imageText) => {
   );
 };
 
+/* REMOVE THIS PLACEHOLDER*/
+
+const cardDetailsStyle = {
+  width: "380px",
+  height: "300px"
+};
+
+const cardDetails = {
+  componentType: 'card-details',
+  imageUrl: "src/components/cards/new_york.jpg",
+  imageText: null,
+  amountUsed: "£ 600.00",
+  amountLimit: "£ 1000.00",
+  title: "New York",
+  description: "something something",
+  showDetailsButton: true,
+  progressBar: "40",
+  progressFilledColor: "#f6cb47",
+  endDate: "By 15th June 2018",
+  cardStyle: cardDetailsStyle
+};
+
 const getCardContent = (
   amountUsed,
   amountLimit,
@@ -21,7 +44,9 @@ const getCardContent = (
 ) => {
   return (
     <div className="content-container-card">
-      {showDetailsButton && <div className="details-button"> ...</div>}
+      {showDetailsButton && <div className="details-button">
+        <Link to='/details' to={{ pathname: '/details', cardDetails:  {componentTyp: 'card-details', ...cardDetails}  }} >...</Link>
+      </div>}
       <div className="amount-used">{amountUsed}</div>
       {getElement(amountLimit, ...getElementArgs)}
       {/* the mysterious element returned is a progress bar most of the time. */}
