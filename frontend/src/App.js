@@ -50,27 +50,50 @@ class App extends Component {
 
   constructor(props) {
     super(props);
-    this.state = { goals: "" };
+    this.state = { goals: "", cards: "" };
   };
 
-  getGoals = () => {
+  mapCardsToComponents = (data) => {
+    return data.slice(0, 10).map((data) => 
+    <CardTemplate {...{
+      //id: id,
+      componentType: 'card',
+      imageUrl: data.image_url,
+      imageText: data.name,
+      //description: data.description,
+      //status: data.status,
+      amountUsed: data.balance,
+      amountLimit: data.amount,
+      showDetailsButton: true,
+      progressBar: data.percentage,
+      progressFilledColor: "#f6cb47",
+      endDate: data.date,
+      cardStyle: data.cardStyle
+    }} />);
+  }
+
+  componentDidMount = () => {
     getGoals()
-      .then(data => this.setState({ goals: data }))
-      .catch(error => console.log(error.message)); // Promise
+    .then(data =>
+      {this.setState({
+        cards: this.mapCardsToComponents(data)
+      })
+    })
+    .catch(error => console.log(error.message)); // Promise
+    console.log("ERIK STATE", this.state);
+
   };
 
-  onComponentMount = () => {
-    getGoals();
-    console.log("THIS IS STATE", this.state.data);
-  };
 
   render() {
     return (
       <div>
         <h1>My React App!</h1>
         {this.state.data}
+        {console.log("ERIK STATE 2", this.state)}
         <CardTemplate {...card} />
         <CardTemplate {...cardDetails} />
+        {this.state.cards && this.state.cards}
       </div>
     );
   }

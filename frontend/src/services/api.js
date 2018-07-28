@@ -20,7 +20,7 @@ const REQUEST_CONFIG = (requestType, url) => ({
   @http://localhost:3001/api/goals to retrieve a list of static #LootGoals
   @http://localhost:3001/api/goals/[goal_id] to retrieve a single #LootGoals
 */
-
+/*
 // Make a request for a user with a given ID
 axios.get('/user?ID=12345')
   .then(function (response) {
@@ -34,11 +34,11 @@ axios.get('/user?ID=12345')
   .then(function () {
     // always executed
   });
-
+*/
 async function getGoals(length = 100) {
   try {
-    const response = await axios(REQUEST_CONFIG("GET", 'http://localhost:3001/api/goals?length=100'));
-    return response.json();
+    const response = await axios(REQUEST_CONFIG("GET", 'http://localhost:3001/api/goals'));
+    return response.data;//.json();
   } catch (error) {
     console.error(error);
   }
