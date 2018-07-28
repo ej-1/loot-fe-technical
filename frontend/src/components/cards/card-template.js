@@ -2,12 +2,11 @@ import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import '../cards/card.css'
 
-const getImageContent = (imageUrl, imageText) => {
+const getImageContent = (imageUrl, title) => {
   return (
     <Fragment>
       <img className="card-image" src={imageUrl} alt="card-image" />
-      <p>{imageText}</p>
-      {/* <p>{title}</p> ...could be turned into a function */}
+      <p>{title}</p>
     </Fragment>
   );
 };
@@ -19,46 +18,37 @@ const cardDetailsStyle = {
   height: "300px"
 };
 
-const cardDetails = {
-  componentType: 'card-details',
-  imageUrl: "src/components/cards/new_york.jpg",
-  imageText: null,
-  amountUsed: "£ 600.00",
-  amountLimit: "£ 1000.00",
-  title: "New York",
-  description: "something something",
-  showDetailsButton: true,
-  progressBar: "40",
-  progressFilledColor: "#f6cb47",
-  endDate: "By 15th June 2018",
-  cardStyle: cardDetailsStyle
-};
-
 const getCardContent = (
-  amountUsed,
-  amountLimit,
-  endDate,
-  showDetailsButton,
+  balance,
+  amount,
+  bottomText,
+  breadcrumbButton,
   getElement,
-  getElementArgs
+  getElementArgs,
+  ...cardDetails
 ) => {
+  const cardDetailsClone = Object.assign({}, ...cardDetails)
+  cardDetailsClone.componentType = 'card-details';
+  cardDetailsClone.breadcrumbButton = false;
+  cardDetailsClone.cardStyle = cardDetailsStyle;
+
   return (
     <div className="content-container-card">
-      {showDetailsButton && <div className="details-button">
-        <Link to='/details' to={{ pathname: '/details', cardDetails:  {componentTyp: 'card-details', ...cardDetails}  }} >...</Link>
+      {breadcrumbButton && <div className="details-button">
+      <Link to='/details' to={{ pathname: '/details', cardDetails:  { componentTyp: 'card-details', breadcrumbButton: false, cardStyle: cardDetailsStyle, ...cardDetailsClone }}} >...</Link>
       </div>}
-      <div className="amount-used">{amountUsed}</div>
-      {getElement(amountLimit, ...getElementArgs)}
-      {/* the mysterious element returned is a progress bar most of the time. */}
-      <div className="end-date">{endDate}</div>
+      <div className="amount-used">{balance}</div>
+      {getElement(amount, ...getElementArgs)}
+      {/* the mysterious element returned from getElement is a progress bar most of the time. */}
+      <div className="end-date">{bottomText}</div>
     </div>
   );
 };
 
 const getCardDetailsContent = (
-  amountUsed,
-  amountLimit,
-  endDate,
+  balance,
+  amount,
+  bottomText,
   title,
   description
 ) => {
@@ -73,31 +63,32 @@ const getCardDetailsContent = (
           <p className="description">{description}</p>
         </div>
         <div className="card-details-content-right">
-          <p className="amount-used">{amountLimit}</p>
-          <p className="amount-limit">/ {amountUsed}</p>
+          <p className="amount-used">{amount}</p>
+          <p className="amount-limit">/ {balance}</p>
         </div>
       </div>
       <div className="card-details-content-bottom">
-        <p className="end-date">{endDate}</p>
+        <p className="end-date">{bottomText}</p>
       </div>
     </div>
   );
 };
 
-const getProgressBar = (amountLimit, progressBar, progressFilledColor) => {
+const getProgress = (amount, progress, progressFilledColor) => {
+  console.log("getProgress WHAT IS THE COLOR", progressFilledColor)
   return (
     <Fragment>
       <div className="progress-bar-container">
         <div className="progress-bar">
           <div
             style={{
-              width: `${progressBar}%`,
+              width: `${progress}%`,
               background: `${progressFilledColor}`
             }}
             className="progress"
           />
         </div>
-        <div className="amount-limit">{amountLimit}</div>
+        <div className="amount-limit">{amount}</div>
       </div>
     </Fragment>
   );
@@ -113,7 +104,6 @@ const buttonArguments = {};
 class CardTemplate extends Component {
   constructor(props) {
     super(props);
-    console.log(this.props);
   }
 
   render() {
@@ -121,38 +111,41 @@ class CardTemplate extends Component {
       componentType,
       title,
       imageUrl,
-      imageText,
-      amountUsed,
-      amountLimit,
-      showDetailsButton,
-      progressBar,
+      description,
+      status,
+      balance,
+      amount,
+      breadcrumbButton,
+      progress,
       progressFilledColor,
-      endDate,
+      bottomText,
       cardStyle
     } = this.props;
 
     return (
       <div className="card" style={cardStyle}>
         <div className="image-container">
-          {getImageContent(imageUrl, imageText)}
+          {getImageContent(imageUrl, title)}
         </div>
 
         {componentType === 'card-details' && getCardDetailsContent(
-          amountUsed,
-          amountLimit,
-          endDate,
-          "NEW YORK",
-          "how we spendit"
+          balance,
+          amount,
+          bottomText,
+          title,
+          description,
+          this.props
         )}
 
         {componentType === 'card' && getCardContent(
-            amountUsed,
-            amountLimit,
-            endDate,
-            showDetailsButton,
-            getProgressBar,
-            [progressBar, progressFilledColor]
-          )}
+          balance,
+          amount,
+          bottomText,
+          breadcrumbButton,
+          getProgress,
+          [progress, progressFilledColor[status]],
+          this.props
+        )}
       </div>
     );
   }
