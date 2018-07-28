@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from "react";
-import '../cards/card.scss'
+import '../cards/card.css'
 
 const getImageContent = (imageUrl, imageText) => {
   return (
