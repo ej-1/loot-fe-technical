@@ -15,6 +15,7 @@ const getImageContent = (imageUrl, title) => {
 };
 
 const getCardContent = (
+  id,
   balance,
   amount,
   bottomText,
@@ -27,7 +28,7 @@ const getCardContent = (
   cardDetailsClone.componentType = 'card-details';
 
   return (
-    <ContentContainerCard>
+    <ContentContainerCard key={id}>
       {breadcrumbButton && <BreadcrumbButton>
         <Link to='/details' to={{ pathname: '/details', cardDetails:  { ...cardDetailsClone }}} >...</Link>
       </BreadcrumbButton>}
@@ -40,6 +41,7 @@ const getCardContent = (
 };
 
 const getCardDetailsContent = (
+  id,
   balance,
   amount,
   bottomText,
@@ -49,7 +51,7 @@ const getCardDetailsContent = (
 ) => {
 
   return (
-    <ContentContainerCardDetails>
+    <ContentContainerCardDetails key={id}>
       <div className="card-details-content-top">
         {getButtonElement(buttonText)}
       </div>
@@ -97,6 +99,7 @@ const getButtonElement = (text) => {
 
 const cardStandard = (props) => {
   const {
+    id,
     title,
     imageUrl,
     status,
@@ -114,6 +117,7 @@ const cardStandard = (props) => {
     </CardImageContainer>
 
     {getCardContent(
+      id,
       balance,
       amount,
       bottomText,
@@ -127,6 +131,7 @@ const cardStandard = (props) => {
 
 const cardDetails = (props) => {
   const {
+    id,
     title,
     imageUrl,
     description,
@@ -144,6 +149,7 @@ const cardDetails = (props) => {
     </CardImageContainer>
 
     {getCardDetailsContent(
+      id,
       balance,
       amount,
       bottomText,

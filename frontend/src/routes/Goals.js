@@ -16,7 +16,7 @@ class Goals extends Component {
     console.log(data)
     return data.slice(0, 10).map((data) => 
     <CardTemplate {...{
-      //id: id,
+      id: data.id,
       componentType: 'card',
       imageUrl: data.image_url,
       title: data.name,
