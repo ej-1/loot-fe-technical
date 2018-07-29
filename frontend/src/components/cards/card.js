@@ -36,6 +36,7 @@ class Card extends Component {
           <div className="details-button"> ...</div>
           <div className="amount-used">{amountUsed}</div>
           <div className="progress-bar-container">
+            <Progress progressFilledColor progress></Progress>
             <div className="progress-bar">
               <div
                 style={{
