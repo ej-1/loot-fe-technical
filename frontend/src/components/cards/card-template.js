@@ -15,40 +15,34 @@ const getImageContent = (imageUrl, title) => {
 };
 
 const getCardContent = (
-  id,
-  balance,
-  amount,
-  bottomText,
-  breadcrumbButton,
   getElement,
   getElementArgs,
-  ...cardDetails
+  ...others
 ) => {
-  const cardDetailsClone = Object.assign({}, ...cardDetails)
-  cardDetailsClone.componentType = 'card-details';
+  const props = Object.assign({}, ...others)
+  props.componentType = 'card-details';
 
   return (
-    <ContentContainerCard key={id}>
-      {breadcrumbButton && <BreadcrumbButton>
-        <Link to='/details' to={{ pathname: '/details', cardDetails:  { ...cardDetailsClone }}} >...</Link>
+    <ContentContainerCard key={props.id}>
+      {props.breadcrumbButton && <BreadcrumbButton>
+        <Link to='/details' to={{ pathname: '/details', cardDetails:  { ...props }}} >...</Link>
       </BreadcrumbButton>}
-      <AmountUsed>{balance}</AmountUsed>
-      {getElement(amount, ...getElementArgs)}
+      <AmountUsed>{props.balance}</AmountUsed>
+      {getElement(props.amount, ...getElementArgs)}
       {/* the mysterious element returned from getElement is a progress bar most of the time. */}
-      <EndDate>{bottomText}</EndDate>
+      <EndDate>{props.bottomText}</EndDate>
     </ContentContainerCard>
   );
 };
 
-const getCardDetailsContent = (
-  id,
-  balance,
-  amount,
-  bottomText,
-  title,
-  description,
-  buttonText
-) => {
+const getCardDetailsContent = (props) => {
+  const { id,
+    balance,
+    amount,
+    bottomText,
+    title,
+    description,
+    buttonText } = props;
 
   return (
     <ContentContainerCardDetails key={id}>
@@ -99,16 +93,11 @@ const getButtonElement = (text) => {
 
 const cardStandard = (props) => {
   const {
-    id,
     title,
     imageUrl,
     status,
-    balance,
-    amount,
-    breadcrumbButton,
     progress,
     progressFilledColor,
-    bottomText,
   } = props;
 
   return <StyledCard standard>
@@ -117,11 +106,6 @@ const cardStandard = (props) => {
     </CardImageContainer>
 
     {getCardContent(
-      id,
-      balance,
-      amount,
-      bottomText,
-      breadcrumbButton,
       getProgress,
       [progress, progressFilledColor[status]],
       props
@@ -130,32 +114,13 @@ const cardStandard = (props) => {
 }
 
 const cardDetails = (props) => {
-  const {
-    id,
-    title,
-    imageUrl,
-    description,
-    balance,
-    amount,
-    progress,
-    progressFilledColor,
-    bottomText,
-    buttonText
-  } = props;
-
   return <StyledCard details>
     <CardImageContainer>
-      {getImageContent(imageUrl)}
+      {getImageContent(props.imageUrl)}
     </CardImageContainer>
 
     {getCardDetailsContent(
-      id,
-      balance,
-      amount,
-      bottomText,
-      title,
-      description,
-      buttonText
+     props
     )}
   </StyledCard>
 }
