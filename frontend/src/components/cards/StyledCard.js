@@ -140,41 +140,6 @@ const ContentContainerCardDetails = styled.div`
   }
 `
 
-
-const fontStack = '"Lato", sans-serif;'
-
-
-
-const Header1 = styled.div`
-  font-size: 15px;
-  font-family: ${fontStack};
-
-  ${props => props.right && `
-  text-align: right;
-  `}
-
-  ${props => props.left && `
-  text-align: left;
-  `}
-
-  ${props => props.grey && 'color: #717171;'}
-`
-
-const P1 = styled.div`
-  font-size: 12px;
-  font-family: ${fontStack};
-
-  ${props => props.right && `
-  text-align: right;
-  `}
-
-  ${props => props.left && `
-  text-align: left;
-  `}
-
-  ${props => props.grey && 'color: #717171;'}
-`
-
 const Button = styled.div`
   color: #fff;
   border: 0;
@@ -189,10 +154,4 @@ const Button = styled.div`
   ${props => props.completed && 'background: #54b8c3;'}
 `
 
-const LinkContent = styled.div`
-  text-decoration: none;
-  text-align: center;
-  color: #fff;
-`
-
-export { StyledCard, CardImageContainer, StyledImg, ContentContainerCard, ProgressBar, AmountLimit, BreadcrumbButton, AmountUsed, EndDate, ContentContainerCardDetails, Header1, P1, Button }
+export { StyledCard, CardImageContainer, StyledImg, ContentContainerCard, ProgressBar, AmountLimit, BreadcrumbButton, AmountUsed, EndDate, ContentContainerCardDetails, Button }

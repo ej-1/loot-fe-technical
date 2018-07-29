@@ -1,7 +1,9 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import '../cards/card.css'
-import { StyledCard, CardImageContainer, StyledImg, ContentContainerCard, ProgressBar, AmountLimit, BreadcrumbButton, AmountUsed, EndDate, ContentContainerCardDetails, Header1, P1, Button } from '../cards/StyledCard'
+import { StyledCard, CardImageContainer, StyledImg, ContentContainerCard, ProgressBar, AmountLimit, BreadcrumbButton, AmountUsed, EndDate, ContentContainerCardDetails } from '../cards/StyledCard'
+import { Header1, P1 } from '../cards/StyledText'
+import { Button } from '../cards/StyledButton'
 
 const getImageContent = (imageUrl, title) => {
   return (
