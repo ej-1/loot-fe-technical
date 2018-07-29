@@ -1,34 +1,9 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
-//import Card from "../components/cards/card";
 import CardTemplate from "../components/cards/card-template";
 
 import { API_DEFAULT_DATA } from "../services/api-config";
 import { getGoals } from "../services/api";
-
-const cardDetailsStyle = {
-  width: "380px",
-  height: "300px"
-};
-
-const cardStyle = {
-  width: "180px",
-  height: "250px"
-};
-
-const cardDetails = {
-  componentType: 'card-details',
-  imageUrl: "src/components/cards/new_york.jpg",
-  balance: "£ 600.00",
-  amount: "£ 1000.00",
-  title: "New York",
-  description: "something something",
-  breadcrumbButton: true,
-  progress: "40",
-  progressFilledColor: "#f6cb47",
-  bottomText: "By 15th June 2018",
-  cardStyle: cardDetailsStyle
-};
 
 class Goals extends Component {
 
@@ -53,7 +28,7 @@ class Goals extends Component {
       progress: data.percentage * 100,
       progressFilledColor: { IN_PROGRESS: "#f6cb47", COMPLETED: "#00bbc6" },
       bottomText: new Date(data.date).toDateString(),
-      cardStyle: data.cardStyle
+      buttonText: 'Release funds'
     }} />);
   }
 
@@ -70,7 +45,6 @@ class Goals extends Component {
   render() {
     return (
       <div>
-        <Link to='/details' to={{ pathname: '/details', cardDetails:  {componentTyp: 'card-details', breadcrumbButton: false, cardStyle: cardDetailsStyle, ...cardDetails}}} >Create Idea</Link>
         {this.state.cards && this.state.cards}
       </div>
     );
