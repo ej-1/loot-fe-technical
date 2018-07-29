@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import '../cards/card.css'
-import { StyledCard, CardImageContainer, StyledImg, ContentContainerCard, ProgressBar, AmountLimit, BreadcrumbButton, AmountUsed, EndDate } from '../cards/StyledCard'
+import { StyledCard, CardImageContainer, StyledImg, ContentContainerCard, ProgressBar, AmountLimit, BreadcrumbButton, AmountUsed, EndDate, ContentContainerCardDetails, Header1, P1, Button } from '../cards/StyledCard'
 
 const getImageContent = (imageUrl, title) => {
   return (
@@ -55,24 +55,24 @@ const getCardDetailsContent = (
 ) => {
   console.log("what is here", description);
   return (
-    <div className="content-container-details">
+    <ContentContainerCardDetails>
       <div className="card-details-content-top">
         {getButtonElement(buttonArguments)}
       </div>
       <div className="card-details-content-middle">
         <div className="card-details-content-left">
-          <p className="title">{title}</p>
-          <p className="description">{description}</p>
+          <Header1>{title}</Header1>
+          <P1 grey>{description}</P1>
         </div>
         <div className="card-details-content-right">
-          <p className="amount-used">{amount}</p>
-          <p className="amount-limit">/ {balance}</p>
+          <Header1>{amount}</Header1>
+          <P1 grey>/ {balance}</P1>
         </div>
       </div>
       <div className="card-details-content-bottom">
-        <p className="end-date">{bottomText}</p>
+        <P1 right>{bottomText}</P1>
       </div>
-    </div>
+    </ContentContainerCardDetails>
   );
 };
 
@@ -97,8 +97,9 @@ const getProgress = (amount, progress, progressFilledColor) => {
 };
 
 const getButtonElement = () => {
-  return <button type="btn" className="button">Release funds</button>
-  ;
+  return <Button completed>
+    Release funds
+  </Button>
 };
 
 const cardStandard = (props) => {
@@ -153,7 +154,7 @@ const cardDetails = (props) => {
 
   return <StyledCard details>
     <CardImageContainer>
-      {getImageContent(imageUrl, title)}
+      {getImageContent(imageUrl)}
     </CardImageContainer>
 
     {getCardDetailsContent(

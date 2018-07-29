@@ -23,15 +23,15 @@ const CardImageContainer = styled.div`
 `
 
 /* rename later*/
-  const StyledImg = styled.div`
+const StyledImg = styled.div`
   width: 100%;
   height: 100%;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   filter: brightness(80%);
-  `
+`
 
-  const ContentContainerCard = styled.div`
+const ContentContainerCard = styled.div`
   height: 42%;
   position: relative;
   background: #fff;
@@ -39,7 +39,7 @@ const CardImageContainer = styled.div`
   border-bottom-right-radius: 5px;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
   color: #d6d6d6;
-  `
+`
 
 /*
 const CardContentContainer = styled.div`
@@ -97,7 +97,6 @@ const AmountUsed = styled.div`
   font-size: 15px;
 `
 
-
 const EndDate = styled.div`
   position: absolute;
   bottom: 10px;
@@ -107,8 +106,93 @@ const EndDate = styled.div`
   font-family: $font-stack;
 `
 
+const ContentContainerCardDetails = styled.div`
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.09);
+    .card-details-content-top {
+        text-align: right;
+        padding: 10px;
+      }
+
+    .card-details-content-bottom {
+        height: 30%;
+        width: 100%;
+        padding-bottom: 10%;
+      }
+
+    .card-details-content-middle {
+      position: relative;
+      display: table;
+      width: 100%;
+
+      .card-details-content-left {
+        width: 50%;
+        display: table-cell;
+        padding: 10px;
+      }
+
+      .card-details-content-right {
+        width: 50%;
+        display: table-cell;
+        text-align: right;
+        padding: 10px;
+      }
+    }
+  }
+`
+
+
+const fontStack = '"Lato", sans-serif;'
 
 
 
+const Header1 = styled.div`
+  font-size: 15px;
+  font-family: ${fontStack};
 
-export { StyledCard, CardImageContainer, StyledImg, ContentContainerCard, ProgressBar, AmountLimit, BreadcrumbButton, AmountUsed, EndDate }
+  ${props => props.right && `
+  text-align: right;
+  `}
+
+  ${props => props.left && `
+  text-align: left;
+  `}
+
+  ${props => props.grey && 'color: #717171;'}
+`
+
+const P1 = styled.div`
+  font-size: 12px;
+  font-family: ${fontStack};
+
+  ${props => props.right && `
+  text-align: right;
+  `}
+
+  ${props => props.left && `
+  text-align: left;
+  `}
+
+  ${props => props.grey && 'color: #717171;'}
+`
+
+const Button = styled.div`
+  color: #fff;
+  border: 0;
+  border-radius: 2px;
+  background: #00bbc6;
+  width: 90px;
+  font-size: 10px;
+  padding: 5px 15px 5px 15px;
+  text-align: center;
+  background: #54b8c3;
+  display: inline;
+  ${props => props.completed && 'background: #54b8c3;'}
+`
+
+const LinkContent = styled.div`
+  text-decoration: none;
+  text-align: center;
+  color: #fff;
+`
+
+export { StyledCard, CardImageContainer, StyledImg, ContentContainerCard, ProgressBar, AmountLimit, BreadcrumbButton, AmountUsed, EndDate, ContentContainerCardDetails, Header1, P1, Button }
