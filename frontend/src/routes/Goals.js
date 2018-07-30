@@ -5,6 +5,8 @@ import CardTemplate from "../components/cards/card-template";
 import { API_DEFAULT_DATA } from "../services/api-config";
 import { getGoals } from "../services/api";
 
+import PROGRESS_BAR_COLORS from "../components/progressBars/colors";
+
 class Goals extends Component {
 
   constructor(props) {
@@ -13,7 +15,6 @@ class Goals extends Component {
   };
 
   mapCardsToComponents = (data) => {
-    console.log(data)
     return data.slice(0, 10).map((data) => 
     <CardTemplate {...{
       id: data.id,
@@ -26,7 +27,7 @@ class Goals extends Component {
       amount: `£ ${data.amount}.00`, // sloppy. change this later.
       breadcrumbButton: true,
       progress: data.percentage * 100,
-      progressFilledColor: { IN_PROGRESS: "#f6cb47", COMPLETED: "#00bbc6" },
+      progressFilledColor: PROGRESS_BAR_COLORS,
       bottomText: new Date(data.date).toDateString(),
       buttonText: 'Release funds'
     }} />);
