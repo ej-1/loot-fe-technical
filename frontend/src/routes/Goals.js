@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { getGoals } from "../services/api";
+import { getGoalsStatic } from "../services/api";
 import { mapTenCards } from "../components/mappers/cardMapper";
 
 class Goals extends Component {
@@ -9,7 +9,7 @@ class Goals extends Component {
   }
 
   componentDidMount = () => {
-    getGoals()
+    getGoalsStatic()
       .then(data => {
         this.setState({
           cards: mapTenCards(data)
