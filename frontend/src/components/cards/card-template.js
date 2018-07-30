@@ -68,7 +68,7 @@ const getCardDetailsContent = (
 
   return (
     <ContentContainerCardDetails key={id}>
-      {getElement2(amount, progress, ...getElementArgs2)} look here
+      {getElement2(amount, progress, ...getElementArgs2)}
       <div className="card-details-content-top">
         {getElement(getElementArgs)}
       </div>
