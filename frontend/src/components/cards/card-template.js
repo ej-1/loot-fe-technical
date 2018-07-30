@@ -83,7 +83,9 @@ const getCardDetailsContent = (
         </div>
       </div>
       <div className="card-details-content-bottom">
-        <P1 right>{bottomText}</P1>
+        <div className="card-details-content-bottom-inner">
+          <P1 right>{bottomText}</P1>
+        </div>
       </div>
     </ContentContainerCardDetails>
   );

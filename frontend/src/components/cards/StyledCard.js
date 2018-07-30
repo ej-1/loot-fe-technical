@@ -122,6 +122,10 @@ const ContentContainerCardDetails = styled.div`
         padding-bottom: 10%;
       }
 
+    .card-details-content-bottom-inner {
+      padding-right: 10px;
+    }
+
     .card-details-content-middle {
       position: relative;
       display: table;
