@@ -52,14 +52,24 @@ const CardDetailsContentContainer = styled.div`
 */
 
 const ProgressBar = styled.div`
-  position: absolute;
-  top: 40px;
-  border: 0.5px solid #f3f3f3;
-  border-radius: 2px;
   background: #f7f7f7;
-  height: 7px;
-  right: 5%;
-  left: 5%;
+
+  ${props => props.medium && `
+    position: absolute;
+    top: 40px;
+    height: 7px;
+    right: 5%;
+    left: 5%;
+    border-radius: 4px;
+    border: 0.5px solid #f3f3f3;
+  `}
+
+  ${props => props.thin && `
+    position: relative;
+    width: 100%;
+    height: 3px;
+  `}
+
 `
 
 const AmountLimit = styled.div`

@@ -38,16 +38,18 @@ const getCardStandardContent = (
   );
 };
 
-const getCardDetailsContent = (props, getElement, getElementArgs) => {
+const getCardDetailsContent = (getElement, getElementArgs, getElement2, getElementArgs2, props) => {
   const { id,
     balance,
     amount,
     bottomText,
     title,
-    description} = props;
+    description,
+    progress} = props;
 
   return (
     <ContentContainerCardDetails key={id}>
+      {getElement2(amount, progress, ...getElementArgs2)} look here
       <div className="card-details-content-top">
         {getElement(getElementArgs)}
       </div>
@@ -68,24 +70,36 @@ const getCardDetailsContent = (props, getElement, getElementArgs) => {
   );
 };
 
-const getProgressBar = (amount, progress, progressFilledColor) => {
+const getProgressBar = (amount, progress, progressFilledColor, type) => {
+  const children =  <div
+                      style={{
+                        width: `${progress}%`,
+                        background: `${progressFilledColor}`,
+                      }}
+                      className="progress"
+                    />
+
   return (
     <Fragment>
-      <ProgressBar>
-        <div
-            style={{
-              width: `${progress}%`,
-              background: `${progressFilledColor}`,
-              height: '100%',
-              borderRadius: '2px',
-            }}
-            className="progress"
-          />
-      </ProgressBar>
+      {type === 'thin' && getProgressBarThin(children)}
+      {type === 'medium' && getProgressBarMedium(children)}
       <AmountLimit>{amount}</AmountLimit>
     </Fragment>
   );
 };
+
+const getProgressBarMedium = (children) => {
+  return <ProgressBar medium>
+    {children}
+  </ProgressBar>
+}
+
+const getProgressBarThin = (children) => {
+  return <ProgressBar thin>
+    {children}
+  </ProgressBar>
+}
+
 
 const getButtonElement = (text) => {
   return <Button completed>
@@ -93,13 +107,11 @@ const getButtonElement = (text) => {
   </Button>
 };
 
-const cardStandard = (getContent, getElement, props) => {
+const cardStandard = (getContent, getElement, getElementArgs, props) => {
   const {
     title,
     imageUrl,
-    status,
     progress,
-    progressFilledColor,
   } = props;
 
   return <StyledCard standard>
@@ -109,22 +121,24 @@ const cardStandard = (getContent, getElement, props) => {
 
     {getContent(
       getElement,
-      [progress, progressFilledColor[status]],
+      [progress, ...getElementArgs],
       props
     )}
   </StyledCard>
 }
 
-const cardDetails = (props, getContent, getElement, getElementArgs) => {
+const cardDetails = (getContent, getElement, getElementArgs, getElement2, getElementArgs2, props) => {
   return <StyledCard details>
     <CardImageContainer>
       {getImageContent(props.imageUrl)}
     </CardImageContainer>
 
     {getContent(
-     props,
      getElement,
-     getElementArgs
+     getElementArgs,
+     getElement2,
+     getElementArgs2,
+     props
     )}
   </StyledCard>
 }
@@ -138,14 +152,17 @@ class CardTemplate extends Component {
     return (
       <Fragment>
         {this.props.componentType === 'card-details' && cardDetails(
-          this.props,
           getCardDetailsContent,
           getButtonElement,
-          this.props.buttonText
+          this.props.buttonText,
+          getProgressBar,
+          [this.props.progressFilledColor[this.props.status], 'thin'],
+          this.props
         )}
         {this.props.componentType === 'card' && cardStandard(
           getCardStandardContent,
           getProgressBar,
+          [this.props.progressFilledColor[this.props.status], 'medium'],
           this.props
         )}
       </Fragment>
