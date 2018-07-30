@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import './App.css';
-import Goals from './routes/Goals'
-import GoalDetails from './routes/GoalDetails';
+import "./App.css";
+import Goals from "./routes/Goals";
+import GoalDetails from "./routes/GoalDetails";
 
 class App extends Component {
   render() {

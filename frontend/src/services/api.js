@@ -14,7 +14,6 @@ const REQUEST_CONFIG = (requestType, url) => ({
   referrer: "no-referrer"
 });
 
-
 /*
   @http://localhost:3001/api/goals?length=100 to retrieve a list of random #LootGoals
   @http://localhost:3001/api/goals to retrieve a list of static #LootGoals
@@ -37,18 +36,21 @@ axios.get('/user?ID=12345')
 */
 async function getGoals(length = 100) {
   try {
-    const response = await axios(REQUEST_CONFIG("GET", 'http://localhost:3001/api/goals'));
-    return response.data;//.json();
+    const response = await axios(
+      REQUEST_CONFIG("GET", "http://localhost:3001/api/goals")
+    );
+    return response.data; //.json();
   } catch (error) {
     console.error(error);
   }
 }
 
-
 async function getGoal(id) {
   try {
-    const response = await axios(REQUEST_CONFIG("GET", `http://localhost:3001/api/goal/${id}`));
-    return response.data;//.json();
+    const response = await axios(
+      REQUEST_CONFIG("GET", `http://localhost:3001/api/goal/${id}`)
+    );
+    return response.data; //.json();
   } catch (error) {
     console.error(error);
   }
@@ -69,4 +71,4 @@ async function getGoal(id) {
   return response.json();
 }
 
-export { getGoals, getGoal };//, getGoalsStatic, getGoal };
+export { getGoals, getGoal }; //, getGoalsStatic, getGoal };

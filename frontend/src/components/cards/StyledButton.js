@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 const Button = styled.div`
   color: #fff;
@@ -11,7 +11,7 @@ const Button = styled.div`
   text-align: center;
   background: #54b8c3;
   display: inline;
-  ${props => props.completed && 'background: #54b8c3;'}
-`
+  ${props => props.completed && "background: #54b8c3;"};
+`;
 
-export { Button }
+export { Button };
