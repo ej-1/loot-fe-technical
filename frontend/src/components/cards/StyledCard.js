@@ -43,16 +43,6 @@ const ContentContainerCard = styled.div`
   color: #d6d6d6;
 `;
 
-/*
-const CardContentContainer = styled.div`
-
-`}
-
-const CardDetailsContentContainer = styled.div`
-
-`}
-*/
-
 const ProgressBar = styled.div`
   background: #f7f7f7;
 
