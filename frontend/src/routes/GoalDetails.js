@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { getGoal } from "../services/api";
-import { mapCard } from "../components/mappers/cardMapper";
+import { mapCard } from "../components/mappers/card-mappers";
 
 class GoalDetails extends Component {
   constructor(props) {
