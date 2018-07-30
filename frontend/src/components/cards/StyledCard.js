@@ -88,7 +88,7 @@ const BreadcrumbButton = styled.div`
 `
 
 /* for details text-align: right;*/
-const AmountUsed = styled.div`
+const TextTopLeft = styled.div`
   position: absolute;
   top: 15%;
   left: 7%;
@@ -97,7 +97,7 @@ const AmountUsed = styled.div`
   font-size: 15px;
 `
 
-const EndDate = styled.div`
+const TextBottomCenter = styled.div`
   position: absolute;
   bottom: 10px;
   width: 100%;
@@ -154,4 +154,4 @@ const Button = styled.div`
   ${props => props.completed && 'background: #54b8c3;'}
 `
 
-export { StyledCard, CardImageContainer, StyledImg, ContentContainerCard, ProgressBar, AmountLimit, BreadcrumbButton, AmountUsed, EndDate, ContentContainerCardDetails, Button }
+export { StyledCard, CardImageContainer, StyledImg, ContentContainerCard, ProgressBar, AmountLimit, BreadcrumbButton, TextTopLeft, TextBottomCenter, ContentContainerCardDetails, Button }

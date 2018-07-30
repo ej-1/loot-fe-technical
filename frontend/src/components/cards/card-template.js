@@ -1,20 +1,23 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import '../cards/card.css'
-import { StyledCard, CardImageContainer, StyledImg, ContentContainerCard, ProgressBar, AmountLimit, BreadcrumbButton, AmountUsed, EndDate, ContentContainerCardDetails } from '../cards/StyledCard'
+import { StyledCard, CardImageContainer, StyledImg, ContentContainerCard, ProgressBar, AmountLimit, BreadcrumbButton, TextTopLeft, TextBottomCenter, ContentContainerCardDetails } from '../cards/StyledCard'
 import { Header1, P1 } from '../cards/StyledText'
 import { Button } from '../cards/StyledButton'
 
 const getImageContent = (imageUrl, title) => {
   return (
     <StyledImg>
+      {/* Wanted to use a styledcomponent or other solution and pass in url as prop, but could not get it to work for now.
+        Also images get stretched. Need to add fix for that on container.
+      */}
       <img class="card-image" src={imageUrl} alt="card-image" />
       <p>{title}</p>
     </StyledImg>
   );
 };
 
-const getCardContent = (
+const getCardStandardContent = (
   getElement,
   getElementArgs,
   ...others
@@ -27,27 +30,26 @@ const getCardContent = (
       {props.breadcrumbButton && <BreadcrumbButton>
         <Link to='/details' to={{ pathname: '/details', cardDetails:  { ...props }}} >...</Link>
       </BreadcrumbButton>}
-      <AmountUsed>{props.balance}</AmountUsed>
+      <TextTopLeft>{props.balance}</TextTopLeft>
       {getElement(props.amount, ...getElementArgs)}
       {/* the mysterious element returned from getElement is a progress bar most of the time. */}
-      <EndDate>{props.bottomText}</EndDate>
+      <TextBottomCenter>{props.bottomText}</TextBottomCenter>
     </ContentContainerCard>
   );
 };
 
-const getCardDetailsContent = (props) => {
+const getCardDetailsContent = (props, getElement, getElementArgs) => {
   const { id,
     balance,
     amount,
     bottomText,
     title,
-    description,
-    buttonText } = props;
+    description} = props;
 
   return (
     <ContentContainerCardDetails key={id}>
       <div className="card-details-content-top">
-        {getButtonElement(buttonText)}
+        {getElement(getElementArgs)}
       </div>
       <div className="card-details-content-middle">
         <div className="card-details-content-left">
@@ -66,7 +68,7 @@ const getCardDetailsContent = (props) => {
   );
 };
 
-const getProgress = (amount, progress, progressFilledColor) => {
+const getProgressBar = (amount, progress, progressFilledColor) => {
   return (
     <Fragment>
       <ProgressBar>
@@ -91,7 +93,7 @@ const getButtonElement = (text) => {
   </Button>
 };
 
-const cardStandard = (props) => {
+const cardStandard = (getContent, getElement, props) => {
   const {
     title,
     imageUrl,
@@ -105,22 +107,24 @@ const cardStandard = (props) => {
       {getImageContent(imageUrl, title)}
     </CardImageContainer>
 
-    {getCardContent(
-      getProgress,
+    {getContent(
+      getElement,
       [progress, progressFilledColor[status]],
       props
     )}
   </StyledCard>
 }
 
-const cardDetails = (props) => {
+const cardDetails = (props, getContent, getElement, getElementArgs) => {
   return <StyledCard details>
     <CardImageContainer>
       {getImageContent(props.imageUrl)}
     </CardImageContainer>
 
-    {getCardDetailsContent(
-     props
+    {getContent(
+     props,
+     getElement,
+     getElementArgs
     )}
   </StyledCard>
 }
@@ -134,9 +138,14 @@ class CardTemplate extends Component {
     return (
       <Fragment>
         {this.props.componentType === 'card-details' && cardDetails(
-          this.props
+          this.props,
+          getCardDetailsContent,
+          getButtonElement,
+          this.props.buttonText
         )}
         {this.props.componentType === 'card' && cardStandard(
+          getCardStandardContent,
+          getProgressBar,
           this.props
         )}
       </Fragment>
