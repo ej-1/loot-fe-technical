@@ -22,7 +22,7 @@ const getImageContent = (imageUrl, title) => {
       {/* Wanted to use a styledcomponent or other solution and pass in url as prop, but could not get it to work for now.
         Also images get stretched. Need to add fix for that on container.
       */}
-      <img class="card-image" src={imageUrl} alt="card-image" />
+      <img class="card-image" src={imageUrl} />
       <p>{title}</p>
     </StyledImg>
   );
