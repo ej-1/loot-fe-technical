@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
-import "../cards/card.css";
+import "../cards/CardTemplate.css";
 import {
   StyledCard,
   CardImageContainer,

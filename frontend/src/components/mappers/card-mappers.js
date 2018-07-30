@@ -1,5 +1,5 @@
 import React from "react";
-import CardTemplate from "../cards/card-template";
+import CardTemplate from "../cards/CardTemplate";
 import PROGRESS_BAR_COLORS from "../progressBars/colors";
 
 const mapTenCards = data => {
