@@ -104,7 +104,7 @@ const getProgressBar = (amount, progress, progressFilledColor, type) => {
     <Fragment>
       {type === "thin" && getProgressBarThin(children)}
       {type === "medium" && getProgressBarMedium(children)}
-      <AmountLimit>{amount}</AmountLimit>
+      {type === "medium" && <AmountLimit>{amount}</AmountLimit>}
     </Fragment>
   );
 };
