@@ -43,20 +43,24 @@ async function getGoals(length = 100) {
     console.error(error);
   }
 }
-/*
-async function getGoals(length = 100) {
-  const payload = `?length=${length}`;
-  const endpoint = GOALS_ENDPOINT + payload;
-  let response = await fetch('http://localhost:3001/api/goals?length=100', REQUEST_CONFIG("GET"));
-  console.log("ERIK",response)
-  return response.json();
+
+
+async function getGoal(id) {
+  try {
+    const response = await axios(REQUEST_CONFIG("GET", `http://localhost:3001/api/goal/${id}`));
+    return response.data;//.json();
+  } catch (error) {
+    console.error(error);
+  }
 }
 
+/*
 async function getGoalsStatic() {
   const endpoint = GOALS_ENDPOINT;
   let response = await fetch(endpoint, REQUEST_CONFIG("GET"));
   return response.json();
 }
+*/
 
 async function getGoal(id) {
   const payload = `/${id}`;
@@ -64,5 +68,5 @@ async function getGoal(id) {
   let response = await fetch(endpoint, REQUEST_CONFIG("GET"));
   return response.json();
 }
-*/
-export { getGoals };//, getGoalsStatic, getGoal };
+
+export { getGoals, getGoal };//, getGoalsStatic, getGoal };

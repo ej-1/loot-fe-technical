@@ -28,7 +28,7 @@ const getCardStandardContent = (
   return (
     <ContentContainerCard key={props.id}>
       {props.breadcrumbButton && <BreadcrumbButton>
-        <Link to='/details' to={{ pathname: '/details', cardDetails:  { ...props }}} >...</Link>
+        <Link to='/details' to={{ pathname: '/details', id:  props.id }} >...</Link>
       </BreadcrumbButton>}
       <TextTopLeft>{props.balance}</TextTopLeft>
       {getElement(props.amount, ...getElementArgs)}
